@@ -1,3 +1,4 @@
+// components/Navbar.js
 "use client";
 import { useState } from "react";
 import Link from "next/link";
@@ -8,85 +9,151 @@ export default function Navbar() {
   const close = () => setMobileOpen(false);
 
   return (
-    <header className="absolute top-6 left-0 w-full z-50">
-      {/* Logo Center */}
-      <div className="flex justify-center">
-        <Link href="#home" onClick={close} className="flex items-center gap-3">
-          <img
-            src="/logo.jpg"
-            alt="IREX Pharmacy"
-            className="w-14 h-14 object-cover"
-          />
-          <span className="text-2xl font-bold text-indigo-700">
-            IREX Pharmacy
-          </span>
-        </Link>
-      </div>
+    <header className="bg-white shadow-md">
+      <div className="max-w-7xl mx-auto px-4 py-3">
+        {/* Mobile First - Logo & Hamburger */}
+        <div className="flex items-center justify-between">
+          <Link
+            href="#home"
+            onClick={close}
+            className="flex items-center gap-2"
+          >
+            <img
+              src="/logo.jpg"
+              alt="IREX Pharmacy"
+              className="w-10 h-10 object-cover rounded-full"
+            />
+            <span className="text-lg font-bold text-indigo-700">
+              IREX PHARMACY
+            </span>
+          </Link>
 
-      {/* Desktop Menu Below Logo */}
-      <nav className="hidden md:flex justify-center gap-8 mt-3 text-sm font-semibold">
-        <Link href="#home" style={{ color: "#FF0000" }}>
-          Home
-        </Link>
-        <Link href="#about" style={{ color: "#FF7F00" }}>
-          About
-        </Link>
-        <Link href="#products" style={{ color: "#FFFF00" }}>
-          Products
-        </Link>
-        <Link href="#services" style={{ color: "#00FF00" }}>
-          Services
-        </Link>
-        <Link href="#why-us" style={{ color: "#0000FF" }}>
-          Why Us
-        </Link>
-        <Link href="#team" style={{ color: "#4B0082" }}>
-          Team
-        </Link>
-        <Link href="#clients" style={{ color: "#8B00FF" }}>
-          Clients
-        </Link>
-        <Link href="#contact" style={{ color: "#FF1493" }}>
-          Contact
-        </Link>
-      </nav>
+          {/* Hamburger Menu - Mobile Only */}
+          <button
+            onClick={toggle}
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            aria-label="Menu"
+          >
+            <span className="w-6 h-0.5 bg-gray-800 block rounded"></span>
+            <span className="w-6 h-0.5 bg-gray-800 block rounded"></span>
+            <span className="w-6 h-0.5 bg-gray-800 block rounded"></span>
+          </button>
 
-      {/* Mobile Menu Button */}
-      <div className="flex justify-center md:hidden mt-2">
-        <button onClick={toggle} className="border px-4 py-2">
-          MENU
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white mt-2 px-6 py-4 flex flex-col items-center gap-4 text-sm font-semibold shadow">
-          <Link href="#home" style={{ color: "#FF0000" }} onClick={close}>
-            Home
-          </Link>
-          <Link href="#about" style={{ color: "#FF7F00" }} onClick={close}>
-            About
-          </Link>
-          <Link href="#products" style={{ color: "#FFFF00" }} onClick={close}>
-            Products
-          </Link>
-          <Link href="#services" style={{ color: "#00FF00" }} onClick={close}>
-            Services
-          </Link>
-          <Link href="#why-us" style={{ color: "#0000FF" }} onClick={close}>
-            Why Us
-          </Link>
-          <Link href="#team" style={{ color: "#4B0082" }} onClick={close}>
-            Team
-          </Link>
-          <Link href="#clients" style={{ color: "#8B00FF" }} onClick={close}>
-            Clients
-          </Link>
-          <Link href="#contact" style={{ color: "#FF1493" }} onClick={close}>
-            Contact
-          </Link>
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex gap-6 text-sm font-semibold">
+            <Link
+              href="#home"
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              Home
+            </Link>
+            <Link
+              href="#about"
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              About
+            </Link>
+            <Link
+              href="#products"
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              Products
+            </Link>
+            <Link
+              href="#services"
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              Services
+            </Link>
+            <Link
+              href="#why-us"
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              Why Us
+            </Link>
+            <Link
+              href="#team"
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              Team
+            </Link>
+            <Link
+              href="#clients"
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              Clients
+            </Link>
+            <Link
+              href="#contact"
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              Contact
+            </Link>
+          </nav>
         </div>
-      )}
+
+        {/* Mobile Menu */}
+        {mobileOpen && (
+          <nav className="md:hidden mt-4 pb-2 flex flex-col gap-3 text-sm font-semibold border-t pt-4">
+            <Link
+              href="#home"
+              className="text-gray-700 hover:text-indigo-600 py-2"
+              onClick={close}
+            >
+              Home
+            </Link>
+            <Link
+              href="#about"
+              className="text-gray-700 hover:text-indigo-600 py-2"
+              onClick={close}
+            >
+              About
+            </Link>
+            <Link
+              href="#products"
+              className="text-gray-700 hover:text-indigo-600 py-2"
+              onClick={close}
+            >
+              Products
+            </Link>
+            <Link
+              href="#services"
+              className="text-gray-700 hover:text-indigo-600 py-2"
+              onClick={close}
+            >
+              Services
+            </Link>
+            <Link
+              href="#why-us"
+              className="text-gray-700 hover:text-indigo-600 py-2"
+              onClick={close}
+            >
+              Why Us
+            </Link>
+            <Link
+              href="#team"
+              className="text-gray-700 hover:text-indigo-600 py-2"
+              onClick={close}
+            >
+              Team
+            </Link>
+            <Link
+              href="#clients"
+              className="text-gray-700 hover:text-indigo-600 py-2"
+              onClick={close}
+            >
+              Clients
+            </Link>
+            <Link
+              href="#contact"
+              className="text-gray-700 hover:text-indigo-600 py-2"
+              onClick={close}
+            >
+              Contact
+            </Link>
+          </nav>
+        )}
+      </div>
     </header>
   );
 }
